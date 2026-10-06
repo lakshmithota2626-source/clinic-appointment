@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: bloomcare-clinic-api
+    runtime: java
+    rootDir: backend
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/clinic-appointment-booking-1.0.0.jar
+    envVars:
+      - key: DB_DRIVER
+        value: org.h2.Driver
+      - key: DB_URL
+        value: jdbc:h2:file:./data/clinicdb;AUTO_SERVER=TRUE
+      - key: DB_USERNAME
+        value: sa
+      - key: DB_PASSWORD
+        sync: false
